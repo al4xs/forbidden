@@ -76,8 +76,7 @@ def unique(sequence):
 
 def parse_content_lengths(value, specials):
 	tmp = []
-	array = value.split(",")
-	for entry in array:
+	for entry in value.split(","):
 		entry = entry.strip()
 		if entry:
 			if entry in specials: # base

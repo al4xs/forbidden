@@ -96,8 +96,7 @@ def unique(sequence):
 
 def parse_tests(value, tests, special):
 	tmp = []
-	array = value.split(",")
-	for entry in array:
+	for entry in value.split(","):
 		entry = entry.strip()
 		if entry:
 			if entry == special: # all
@@ -112,8 +111,7 @@ def parse_tests(value, tests, special):
 
 def parse_content_lengths(value, specials):
 	tmp = []
-	array = value.split(",")
-	for entry in array:
+	for entry in value.split(","):
 		entry = entry.strip()
 		if entry:
 			if entry in specials: # base, path
