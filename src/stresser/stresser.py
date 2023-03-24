@@ -240,7 +240,7 @@ def validate(key, value):
 			elif args["url"].port and (args["url"].port < 1 or args["url"].port > 65535):
 				error("Port number is out of range")
 		elif key == "-dir" and args["directory"] is None:
-			args["directory"] = os.path.abspath(value) + os.path.sep
+			args["directory"] = os.path.abspath(value)
 		elif key == "-r" and args["repeat"] is None:
 			args["repeat"] = value
 			if not args["repeat"].isdigit():
@@ -268,7 +268,7 @@ def validate(key, value):
 		elif key == "-a" and args["agent"] is None:
 			args["agent"] = value
 			if args["agent"].lower() in ["random", "random-all"]:
-				file = os.path.abspath(os.path.split(__file__)[0]) + os.path.sep + "user_agents.txt"
+				file = os.path.join(os.path.abspath(os.path.split(__file__)[0]), "user_agents.txt")
 				if os.path.isfile(file) and os.access(file, os.R_OK) and os.stat(file).st_size > 0:
 					array = read_file(file)
 					args["agent"] = array[random.randint(0, len(array) - 1)] if args["agent"].lower() == "random" else array
