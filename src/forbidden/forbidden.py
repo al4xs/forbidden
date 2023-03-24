@@ -433,7 +433,7 @@ def validate(key, value):
 		elif key == "-a" and args["agent"] is None:
 			args["agent"] = value
 			if args["agent"].lower() in ["random", "random-all"]:
-				file = os.path.abspath(os.path.split(__file__)[0]) + os.path.sep + "user_agents.txt"
+				file = os.path.join(os.path.abspath(os.path.split(__file__)[0]), "user_agents.txt")
 				if os.path.isfile(file) and os.access(file, os.R_OK) and os.stat(file).st_size > 0:
 					array = read_file(file)
 					args["agent"] = array[random.randint(0, len(array) - 1)] if args["agent"].lower() == "random" else array
