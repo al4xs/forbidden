@@ -1069,9 +1069,9 @@ def send_request(record):
 		record["length"] = len(response.content)
 		if record["ignore"] and (record["ignore"]["text"] and re.search(record["ignore"]["text"], response.content.decode("ISO-8859-1"), re.IGNORECASE) or record["ignore"]["lengths"] and any(record["length"] == length for length in record["ignore"]["lengths"])):
 			record["code"] = 0
-	except requests.packages.urllib3.exceptions.LocationParseError as ex:
+	except requests.packages.urllib3.exceptions.LocationParseError:
 		pass
-	except requests.exceptions.RequestException as ex:
+	except requests.exceptions.RequestException:
 		pass
 	finally:
 		if response is not None:
@@ -1108,7 +1108,7 @@ def send_curl(record):
 		record["length"] = int(curl.getinfo(pycurl.SIZE_DOWNLOAD))
 		if record["ignore"] and (record["ignore"]["text"] and re.search(record["ignore"]["text"], response.getvalue().decode("ISO-8859-1"), re.IGNORECASE) or record["ignore"]["lengths"] and any(record["length"] == length for length in record["ignore"]["lengths"])):
 			record["code"] = 0
-	except pycurl.error as ex:
+	except pycurl.error:
 		pass
 	finally:
 		response.close()

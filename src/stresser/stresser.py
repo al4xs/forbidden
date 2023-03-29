@@ -105,7 +105,7 @@ def remove_directory(directory):
 			shutil.rmtree(directory)
 	except Exception:
 		removed = False
-		print(("Cannot remove '{0}' directory").format(directory))
+		print_error(("Cannot remove '{0}' directory").format(directory))
 	return removed
 
 def create_directory(directory):
@@ -115,7 +115,7 @@ def create_directory(directory):
 			os.mkdir(directory)
 	except Exception:
 		created = False
-		print(("Cannot create '{0}' directory").format(directory))
+		print_error(("Cannot create '{0}' directory").format(directory))
 	return created
 
 def check_directory(directory):
